@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,6 @@ Route::get('/saludo/{nombre}', function ($nombre) {
 Route::get('/saludo-user/{user}', function ($user) {
     return view('user', ['user' => $user]);
 })->where('user', '[A-Za-z]+');
+
+//saludo mediante controlador
+Route::get('/saludo-username/{username}', [UserController::class, 'saludo'])->name('saludo')->where('username', '[A-Za-z]+');
